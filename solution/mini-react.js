@@ -1,7 +1,7 @@
 ;(() => {
-	let rootElement, rootDomElement
-	let classCounter = 0
-	const classesGroup = {}
+	let rootElement,
+		rootDomElement,
+		CLASS_TYPE = 'CLASS_TYPE'
 
 	const appendProp = (element, name, value) => {
 		if (isAnEvent(name)) {
@@ -13,18 +13,6 @@
 
 	const isAnEvent = (property) => {
 		return /^on.*$/.test(property)
-	}
-
-	const handleClass = (element) => {
-		let { componentClass, props } = element
-		classCounter++
-		if (classesGroup[classCounter]) {
-			return classesGroup[classCounter]
-		}
-		const reactElement = new componentClass(element)
-		reactElement.render()
-		classesGroup[classCounter] = reactElement
-		return reactElement
 	}
 
 	class Component {
@@ -40,19 +28,24 @@
 	}
 
 	const reRender = () => {
-		classCounter = 0
 		rootDomElement.innerHTML = ''
 		MiniReact.render(rootElement, rootDomElement)
 	}
 
 	const appendChild = (element, child) => {
-		if (child.componentClass) {
-			appendChild(element, child.render())
-		} else if (child instanceof Array) {
+		if (child instanceof Array) {
 			child.forEach((children) => appendChild(element, children))
 		} else if (child instanceof HTMLElement) {
 			element.appendChild(child)
+		} else {
+			appendChild(element, child.render())
 		}
+	}
+
+	const handleClass = (element) => {
+		let { componentClass, props } = element
+		const reactElement = new componentClass(props)
+		return reactElement
 	}
 
 	const handleHtmlElement = (props) => {
