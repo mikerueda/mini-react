@@ -8,7 +8,8 @@ body {
 }
 body #root > div,
 body .container {
-  max-width: 340px;
+  width: 340px;
+  max-width: 90%;
   margin: 48px auto 0;
   background-color: #ffffff;
   overflow: hidden;
@@ -29,6 +30,7 @@ body .container h1 {
 body #root > div input,
 body .container input {
   width: 200px;
+  max-width: 85%;
   margin: 0 auto;
   display: block;
 }
@@ -80,6 +82,7 @@ body .container input[type=range]::-webkit-slider-runnable-track {
 body #root > div p,
 body .container p {
   width: 200px;
+  max-width: 85%;
   margin: 0 auto;
   text-align: center;
   font-size: 14px;

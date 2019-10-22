@@ -7,6 +7,7 @@ $white: #ffffff;
 
 @mixin center {
 	width: 200px;
+	max-width: 85%;
 	margin: 0 auto;
 }
 
@@ -19,7 +20,8 @@ body {
 
 	#root > div,
 	.container {
-		max-width: 340px;
+		width: 340px;
+		max-width: 90%;
 		margin: 48px auto 0;
 		background-color: $white;
 		overflow: hidden;
