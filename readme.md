@@ -1,6 +1,6 @@
 To view the working version open **/reference-material/index.html** in your browser. the production build of the library is already link to the files.
 
-# Mini reactso
+# Mini react
 
 The main goal was to make my own version of react and its most important functionalities after the requirements of the challenge which prove it self as quite the task. this where my first considerations:
 
