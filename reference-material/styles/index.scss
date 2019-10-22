@@ -25,13 +25,15 @@ body {
 		overflow: hidden;
 		box-shadow: 0 2px 16px rgba(80, 80, 100, 0.1);
 		position: relative;
+
 		h1 {
 			margin: 0 0 128px;
 			text-transform: uppercase;
 			text-align: center;
-			padding: 18px 0;
+			padding: 22px 0 18px;
 			border-bottom: 1px solid $grey;
 			font-size: 12px;
+			line-height: 12px;
 			letter-spacing: 2px;
 		}
 

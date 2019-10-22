@@ -20,9 +20,10 @@ body .container h1 {
   margin: 0 0 128px;
   text-transform: uppercase;
   text-align: center;
-  padding: 18px 0;
+  padding: 22px 0 18px;
   border-bottom: 1px solid #e5e5e5;
   font-size: 12px;
+  line-height: 12px;
   letter-spacing: 2px;
 }
 body #root > div input,
