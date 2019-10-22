@@ -1,18 +1,28 @@
 ;(() => {
-	let rootElement,
-		rootDomElement,
-		CLASS_TYPE = 'CLASS_TYPE'
+	let rootElement, rootDomElement
+	let unwantedProps = [ 'tagName', 'children', 'textcontent' ]
 
-	const appendProp = (element, name, value) => {
-		if (isAnEvent(name)) {
-			element.addEventListener(name.substring(2).toLowerCase(), value)
-		} else {
-			element.setAttribute(name, value)
-		}
+	const clearProps = (obj) => {
+		if (obj.hasOwnProperty('componentClass')) throw Error()
+		let newObj = { ...obj }
+		unwantedProps.forEach((e) => {
+			newObj.hasOwnProperty(e) && delete newObj[e]
+		})
+		return newObj
 	}
 
 	const isAnEvent = (property) => {
 		return /^on.*$/.test(property)
+	}
+
+	const appendProp = (element, name, value) => {
+		if (isAnEvent(name)) {
+			element.addEventListener(name.substring(2).toLowerCase(), value)
+		} else if (name === 'className') {
+			element.setAttribute('class', value)
+		} else {
+			element.setAttribute(name, value)
+		}
 	}
 
 	class Component {
@@ -53,20 +63,21 @@
 		const domElement = document.createElement(tagName)
 		if (textContent) domElement.innerText = textContent
 		children && children.forEach((child) => appendChild(domElement, child))
-		Object.entries(props).forEach((prop) => appendProp(domElement, prop[0], prop[1]))
+		Object.entries(clearProps(props)).forEach((prop) => appendProp(domElement, prop[0], prop[1]))
 		return domElement
 	}
 
-	const newElement = (element) => {
-		if (element.tagName) {
-			return handleHtmlElement(element)
-		} else if (element.componentClass) {
-			return handleClass(element)
+	window.Component = Component
+	window.node = (element) => {
+		try {
+			return (element.tagName && handleHtmlElement(element)) || (element.componentClass && handleClass(element))
+		} catch (e) {
+			throw new SyntaxError(
+				'Your instance of Render() should have either a tagName or a componentClass and never both'
+			)
 		}
 	}
 
-	window.Component = Component
-	window.node = (props) => newElement(props)
 	window.MiniReact = {
 		render: (element, domElement) => {
 			rootElement = element
