@@ -4,7 +4,7 @@
 	"description": "basic react functionalities in a custom library",
 	"main": "mini-react.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "jest",
 		"build": "webpack"
 	},
 	"author": "Mike rueda @mikeledicen",
@@ -14,6 +14,7 @@
 		"@babel/preset-env": "^7.6.3",
 		"babel-loader": "^8.0.6",
 		"html-webpack-plugin": "^3.2.0",
+		"jest": "^24.9.0",
 		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.9",
 		"webpack-dev-server": "^3.8.2"
