@@ -1,4 +1,6 @@
-# Mini react
+To view the working version open **/reference-material/index.html** in your browser. the production build of the library is already link to the files.
+
+# Mini reactso
 
 The main goal was to make my own version of react and its most important functionalities after the requirements of the challenge which prove it self as quite the task. this where my first considerations:
 
@@ -26,4 +28,3 @@ The general idea was to be able to identify a render() element from it's props e
 
 ## Conclusions 
 The most challenging part of this whole excercise was to adapt to the given App.js but it also was what made it special. I was able to set a build and test processes with webpack and Jest but more unit tests by it self are my biggest debt due to the lack of time. I tend to prioritize functionality over coverage and as a developer this is the main point of improvement i'm working on.
-
