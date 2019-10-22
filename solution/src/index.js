@@ -1,4 +1,4 @@
-import { isAnEvent, clearProps } from './helpers'
+const { isAnEvent, clearProps } = require('./helpers')
 ;(() => {
 	let rootElement, rootDomElement
 	// checks for type of props to either set them as a event of pass it down to element as html props renaming className to class if found.
